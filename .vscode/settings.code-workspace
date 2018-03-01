@@ -20,6 +20,9 @@
     // JavaScript
     "javascript.format.enable": false,
     "eslint.packageManager": "yarn",
+    "eslint.options": {
+      "configFile": ".eslintrc.js"
+    },
     "eslint.autoFixOnSave": true,
     "prettier.eslintIntegration": true,
 		"prettier.ignorePath": ".prettierignore",
@@ -29,6 +32,7 @@
     "recommendations": [
       "eriklynd.json-tools",
       "sbrink.elm",
+      "octref.vetur",
       "michelemelluso.code-beautifier",
       "formulahendry.auto-close-tag",
       "xabikos.JavaScriptSnippets",

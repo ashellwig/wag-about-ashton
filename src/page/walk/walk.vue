@@ -1,18 +1,18 @@
 <template>
-    <div class="food_container">
+    <div class="walk_container">
     	<head-top :head-title="headTitle" goBack="true"></head-top>
     	<section class="sort_container">
-    		<div class="sort_item" :class="{choose_type:sortBy == 'food'}" >
-    			<div class="sort_item_container" @click="chooseType('food')">
+    		<div class="sort_item" :class="{choose_type:sortBy == 'walk'}" >
+    			<div class="sort_item_container" @click="chooseType('walk')">
     				<div class="sort_item_border">
-    					<span :class="{category_title: sortBy == 'food'}">{{foodTitle}}</span>
+    					<span :class="{category_title: sortBy == 'walk'}">{{walkTitle}}</span>
 		    			<svg width="10" height="10" xmlns="http://www.w3.org/2000/svg" version="1.1" class="sort_icon">
 			    			<polygon points="0,3 10,3 5,8"/>
 			    		</svg>
     				</div>
     			</div>
 	    		<transition name="showlist" v-show="category">
-	    			<section v-show="sortBy == 'food'" class="category_container sort_detail_type">
+	    			<section v-show="sortBy == 'walk'" class="category_container sort_detail_type">
 	    				<section class="category_left">
 	    					<ul>
 	    						<li v-for="(item, index) in category" :key="index" class="category_left_li" :class="{category_active:restaurant_category_id == item.id}" @click="selectCategoryName(item.id, index)">
@@ -176,14 +176,14 @@ import {mapState, mapMutations} from 'vuex'
 import headTop from 'src/components/header/head'
 import shopList from 'src/components/common/shoplist'
 import {getImgPath} from 'src/components/common/mixin'
-import {msiteAddress, foodCategory, foodDelivery, foodActivity} from 'src/service/getData'
+import {msiteAddress, walkCategory, walkDelivery, walkActivity} from 'src/service/getData'
 
 export default {
 	data(){
         return {
         	geohash: '', // city页面传递过来的地址geohash
             headTitle: '', // msiet页面头部标题
-            foodTitle: '', // 排序左侧头部标题
+            walkTitle: '', // 排序左侧头部标题
             restaurant_category_id: '', // 食品类型id值
             restaurant_category_ids: '', //筛选类型的id
             sortBy: '', // 筛选的条件
@@ -220,7 +220,7 @@ export default {
         	//获取从msite页面传递过来的参数
 			this.geohash = this.$route.query.geohash;
 			this.headTitle = this.$route.query.title;
-			this.foodTitle = this.headTitle;
+			this.walkTitle = this.headTitle;
 			this.restaurant_category_id = this.$route.query.restaurant_category_id;
 			//防止刷新页面时，vuex状态丢失，经度纬度需要重新获取，并存入vuex
 			if (!this.latitude) {
@@ -230,7 +230,7 @@ export default {
 			    this.RECORD_ADDRESS(res);
 			}
 		    //获取category分类左侧数据
-	    	this.category = await foodCategory(this.latitude, this.longitude);
+	    	this.category = await walkCategory(this.latitude, this.longitude);
 	    	//初始化时定位当前category分类左侧默认选择项，在右侧展示出其sub_categories列表
 			this.category.forEach(item => {
 				if (this.restaurant_category_id == item.id) {
@@ -238,9 +238,9 @@ export default {
 				}
 			});
 			//获取筛选列表的配送方式
-			this.Delivery = await foodDelivery(this.latitude, this.longitude);
+			this.Delivery = await walkDelivery(this.latitude, this.longitude);
 			//获取筛选列表的商铺活动
-	    	this.Activity = await foodActivity(this.latitude, this.longitude);
+	    	this.Activity = await walkActivity(this.latitude, this.longitude);
 	    	//记录support_ids的状态，默认不选中，点击状态取反，status为true时为选中状态
 	    	this.Activity.forEach((item, index) => {
 	    		this.support_ids[index] = {status: false, id: item.id};
@@ -250,19 +250,19 @@ export default {
     	async chooseType(type){
     		if (this.sortBy !== type) {
     			this.sortBy = type;
-    			//food选项中头部标题发生改变，需要特殊处理
-    			if (type == 'food') {
-					this.foodTitle = '分类';
+    			//walk选项中头部标题发生改变，需要特殊处理
+    			if (type == 'walk') {
+					this.walkTitle = '分类';
     			}else{
-    				//将foodTitle 和 headTitle 进行同步
-    				this.foodTitle = this.headTitle;
+    				//将walkTitle 和 headTitle 进行同步
+    				this.walkTitle = this.headTitle;
     			}
     		}else{
     			//再次点击相同选项时收回列表
     			this.sortBy = '';
-    			if (type == 'food') {
-    				//将foodTitle 和 headTitle 进行同步
-    				this.foodTitle = this.headTitle;
+    			if (type == 'walk') {
+    				//将walkTitle 和 headTitle 进行同步
+    				this.walkTitle = this.headTitle;
     			}
     		}
     	},
@@ -283,7 +283,7 @@ export default {
 		getCategoryIds(id, name){
 			this.restaurant_category_ids = id;
 			this.sortBy = '';
-			this.foodTitle = this.headTitle = name;
+			this.walkTitle = this.headTitle = name;
 
 		},
 		//点击某个排序方式，获取事件对象的data值，并根据获取的值重新获取数据渲染
@@ -344,7 +344,7 @@ export default {
 
 <style lang="scss" scoped>
     @import 'src/style/mixin';
-	.food_container{
+	.walk_container{
 		padding-top: 3.6rem;
 	}
 	.sort_container{
