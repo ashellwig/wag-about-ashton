@@ -1,8 +1,41 @@
 {
-	"folders": [
-		{
-			"path": "/home/ahellwig/Documents/Work/Wag/about-ashton"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": "../"
+    }
+  ],
+  "settings": {
+    /* Editor */
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 1000,
+    "files.eol": "\n",
+    "editor.autoIndent": true,
+    "editor.formatOnSave": true,
+    /* Languages */
+    // HTML
+    "html.format.enable": true,
+    "workbench.iconTheme": "material-icon-theme",
+    // JavaScript
+    "javascript.format.enable": false,
+    "eslint.packageManager": "yarn",
+    "eslint.autoFixOnSave": true,
+    "prettier.eslintIntegration": true,
+		"prettier.ignorePath": ".prettierignore",
+		// Elm
+  },
+  "extensions": {
+    "recommendations": [
+      "eriklynd.json-tools",
+      "sbrink.elm",
+      "michelemelluso.code-beautifier",
+      "formulahendry.auto-close-tag",
+      "xabikos.JavaScriptSnippets",
+      "esbenp.prettier-vscode",
+      "mgmcdermott.vscode-language-babel",
+      "PKief.material-icon-theme",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
 }

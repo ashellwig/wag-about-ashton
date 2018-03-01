@@ -1,14 +1,13 @@
 #
 # File: wag-about-ashton/.gitignore
 # Author: Ashton Hellwig <ahellwig.dev@gmail.com>
-
+#
 
 ## Languages
 
 ### Node/JavaScript
 node_modules/
 npm-debug.log
-package-lock.json
 
 ### Elm
 elm-stuff/

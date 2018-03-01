@@ -1,8 +1,12 @@
 {
-  "name": "elm",
-  "version": "2.0.1",
-  "description": "vue2-elm",
-  "author": "cangdu <1264889788@qq.com>",
+  "name": "wag-about-ashton",
+  "version": "0.1.0",
+  "description": "About my dog walking service",
+  "author": {
+    "name": "Ashton Hellwig",
+    "email": "ahellwig.dev@gmail.com",
+    "url": "https://github.com/ashellwig"
+  },
   "private": true,
   "license": "GPL",
   "scripts": {
@@ -12,6 +16,10 @@
   },
   "dependencies": {
     "better-scroll": "^0.1.15",
+    "elm-format": "^0.7.0-exp",
+    "es2015": "^0.0.0",
+    "es6": "^0.0.7",
+    "eslint": "^4.18.1",
     "fastclick": "^1.0.6",
     "iscroll": "^5.2.0",
     "showdown": "^1.6.4",
